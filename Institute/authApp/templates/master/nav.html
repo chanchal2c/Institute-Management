@@ -12,7 +12,7 @@
           <a class="nav-link active" aria-current="page" href="{% url "home_view" %}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Student</a>
+          <a class="nav-link" href="{% url "student_list" %}">Student</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Teacher</a>
@@ -20,7 +20,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url "logout_view" %}">Logout</a>
         </li>
-        
+
         {% else %}
         <li class="nav-item">
           <a class="nav-link" href="{% url "login_view" %}">Login</a>
