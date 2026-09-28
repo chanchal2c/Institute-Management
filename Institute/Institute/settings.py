@@ -132,6 +132,8 @@ MAILERS = {
 
 AUTH_USER_MODEL = 'authApp.CustomUser'
 
+LOGIN_URL = 'login_view'
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap5"
