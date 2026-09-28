@@ -3,10 +3,10 @@ from authApp.models import *
 
 # Create your models here.
 
-class StudentModel(BasicInfo):
-    roll_no = models.CharField(max_length=20, null=True)
+class TeacherModel(BasicInfo):
+    subject = models.CharField(max_length=100, null=True)
     user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, null=True)
-    image = models.ImageField(upload_to='media/student_images/', null=True)
+    image = models.ImageField(upload_to='media/teacher_images/', null=True)
 
     def __str__(self):
         return f"{self.name}"

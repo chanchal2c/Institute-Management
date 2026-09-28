@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'authApp',
     "crispy_forms",
     "crispy_bootstrap5",
-    'Student'
+    'Student',
+    'Teacher',
 ]
 
 MIDDLEWARE = [
