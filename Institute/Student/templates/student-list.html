@@ -1,11 +1,37 @@
 {% extends "master/base.html" %}
 
 {% block title %}
-  Student List
+Student List
 {% endblock title %}
 
 {% block content %}
-  <div class="container mt-5">
-    <h1>Student List Page</h1>
-  </div>
+<div class="container mt-3">
+  <h1>Student List Page</h1>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Roll</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Email</th>
+        <th scope="col">Address</th>
+        <th scope="col">Date of Birth</th>
+        <th scope="col">Image</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for student in students %}`
+      <tr>
+        <th>{{forloop.counter}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.phone}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.address}}</td>
+        <td>{{student.date_of_birth}}</td>
+        <td><img src="{{student.image.url}}" alt="{{student.name}}" class="img-fluid" style="max-height: 50px;"></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
 {% endblock content %}
