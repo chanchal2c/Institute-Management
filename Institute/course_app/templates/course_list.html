@@ -1,0 +1,41 @@
+{% extends "master/base.html" %}
+
+{% block title %}
+  Course List
+{% endblock title %}
+
+{% block content %}
+
+  <div class="container mt-5">
+    <h1>Course list Page</h1>
+    <a href="{% url "course_add_view" %}" class="btn btn-primary mb-3">Add Course</a>
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">SL</th>
+        <th scope="col">Course Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Category</th>
+        <th scope="col">Credit</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in courses %}`
+      <tr>
+        <th>{{course.id}}</th>
+        <td>{{course.name}}</td>
+        <td>{{course.description}}</td>
+        <td>{{course.category}}</td>
+        <td>{{course.credit}}</td>
+        <td>
+          <a href="{% url "course_edit_view" course.id %}" class="btn btn-sm btn-warning">Edit</a>
+          <a href="{% url "course_delete_view" course.id %}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endblock content %}
+
