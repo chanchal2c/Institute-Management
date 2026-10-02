@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+from django.contrib import messages
+
+from .forms import CategoryForm
 from .models import *
 
 # Create your views here.
@@ -12,3 +15,57 @@ def category_list_view(request):
     }
     
     return render(request, 'category_list.html', context)
+
+
+def category_add_view(request):
+
+    form = CategoryForm()
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Category added successfully.')
+            return redirect('category_list_view')
+
+
+    context = {
+        'form': form,
+        'form_title': 'Add Category Information',
+        'form_btn': 'Add Category',
+        'page_title': 'Add Category'
+    }
+
+    return render(request, 'master/base_form.html', context)
+
+
+
+def category_edit_view(request, category_id):
+
+    each_category = CategoryModel.objects.get(id=category_id)
+
+    form = CategoryForm(instance=each_category)
+
+    if request.method == 'POST':
+        form = CategoryForm(request.POST, instance=each_category)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Category updated successfully.')
+            return redirect('category_list_view')
+
+
+    context = {
+        'form': form,
+        'form_title': 'Edit Category Information',
+        'form_btn': 'Update Category',
+        'page_title': 'Edit Category'
+    }
+
+    return render(request, 'master/base_form.html', context)
+
+
+def category_delete_view(request, category_id):
+    each_category = CategoryModel.objects.get(id=category_id)
+    each_category.delete()
+    messages.success(request, 'Category deleted successfully.')
+    return redirect('category_list_view')
