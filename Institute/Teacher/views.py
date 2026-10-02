@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from .forms import TeacherForm
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from .forms import *
 
 # Create your views here.
 
@@ -11,6 +12,14 @@ def teacher_list(request):
 def teacher_add_view(request):
 
     form = TeacherForm()
+
+    if request.method == 'POST':
+        form = TeacherForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Teacher added successfully.')
+            return redirect('teacher_list')
 
 
     context = {

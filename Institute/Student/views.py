@@ -1,6 +1,5 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from .views import *
 from .models import *
 from .forms import *
 

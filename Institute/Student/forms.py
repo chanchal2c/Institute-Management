@@ -19,7 +19,7 @@ class StudentForm(forms.ModelForm):
             username=self.cleaned_data['username'],
             email=self.cleaned_data['email'],
             password='123456',
-            user_type = 'Student'
+            user_type = 'student'
         )
         student =  super().save(commit=False)
         student.user = user
