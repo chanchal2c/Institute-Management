@@ -1,0 +1,32 @@
+{% extends "master/base.html" %}
+
+{% block title %}
+  Category List
+{% endblock title %}
+
+{% block content %}
+
+  <div class="container mt-5">
+    <h1>Category list Page</h1>
+    <a href="" class="btn btn-primary mb-3">Add Category</a>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">SL</th>
+        <th scope="col">Category Name</th>
+        <th scope="col">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for category in categories %}`
+      <tr>
+        <th>{{category.id}}</th>
+        <td>{{category.name}}</td>
+        <td>{{category.description}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+{% endblock content %}
+
