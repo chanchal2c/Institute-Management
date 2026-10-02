@@ -19,7 +19,6 @@ class CustomUser(AbstractUser):
 class BasicInfo(models.Model):
   name = models.CharField(max_length=100, null=True)
   phone = models.CharField(max_length=15, null=True)
-  email = models.EmailField(unique=True, null=True)
   address = models.TextField(null=True)
   date_of_birth = models.DateField(null=True)
   created_at = models.DateField(auto_now_add=True, null=True)
