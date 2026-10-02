@@ -1,12 +1,19 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import *
+from .models import *
 
 # Create your views here.
 
 def teacher_list(request):
-  
-    return render(request, 'teacher-list.html')
+
+    teachers = TeacherModel.objects.all()
+
+    context = {
+        'teachers': teachers
+    }
+
+    return render(request, 'teacher-list.html', context)
 
 
 def teacher_add_view(request):
